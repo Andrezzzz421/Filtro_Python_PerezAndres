@@ -1,11 +1,11 @@
 import json
-def solo_numero(mensaje):
+def ingresar_numero(mensaje):
     while True:
-        try:
-            numero = int(input(mensaje))
-            return numero
-        except ValueError:
-            print("No es un numero")
+        valor = input(mensaje)
+        if valor.isdigit(): 
+            return valor
+        else:
+            print("Por favor, ingrese un valor numérico.")
 
 def creacion_usuario():
     with open("data/modulos/clientes.json", "r") as outfile:
@@ -14,12 +14,13 @@ def creacion_usuario():
     cliente_nuevo={}
     ID_max = max([cliente_nuevo["ID"] for cliente_nuevo in clientes["Clientes"]],default= 0)
     cliente_nuevo["ID"] = ID_max + 1
-    cliente_nuevo["N_documento"] = solo_numero("N_documento: ")
-    cliente_nuevo["nombres"] = input("Nombres: ")
-    cliente_nuevo["apellidos"] = input("Apellidos: ")
-    cliente_nuevo["telefono"] = solo_numero("Telefono: ")
-    cliente_nuevo["Fijo"] = solo_numero("Fijo: ")
-    cliente_nuevo["direccion"] = input("Direccion: ")
+    cliente_nuevo["N_documento"] = ingresar_numero("Ingrese el Numero de documento")
+    cliente_nuevo["nombres"] = input("Ingrese los Nombres: ")
+    cliente_nuevo["apellidos"] = input("Ingrese los Apellidos: ")
+    cliente_nuevo["telefono"] = ingresar_numero("Ingrese el numero Telefono: ")
+    cliente_nuevo["Fijo"] = ingresar_numero("Ingrese el Numero Fijo: ")
+    cliente_nuevo["direccion"] = input("Ingrese la Direccion: ")
+    cliente_nuevo["Categoria"]= ""
 
     clientes["Clientes"].append(cliente_nuevo)
 
@@ -34,13 +35,24 @@ def mostrar_infousuarios():
 def actualizar_usuario():
     with open("data/modulos/clientes.json", "r") as outfile:
         clientes = json.load(outfile)
+        clientes= clientes["Clientes"]
     cliente_ID = int(input("Ingrese el id del usuario al que quiere actualizar su info: "))
-    for i in clientes:
-        if Clientes["ID"] == cliente_ID:
-            N_documento = input("Ingre el nuevo N_documento: ")
+    for cliente in clientes:
+        if cliente["ID"] == cliente_ID:
+            N_documento = ingresar_numero("Ingre el nuevo N_documento: ")
             nombres = input("Ingresa los nuevos nombres: ")
             apellidos = input("Ingresa los nuevos apellidos: ")
-            telefono = solo_numero("Ingresa el nuevo telefono: ")
-            Fijo = solo_numero("Ingresa el nuevo Fijo: ")
+            telefono = ingresar_numero("Ingresa el nuevo telefono: ")
+            Fijo = ingresar_numero("Ingresa el nuevo Fijo: ")
             direccion = input("Ingresa la nueva direccion: ")
             
+            cliente["N_documento"] = N_documento
+            cliente["nombres"] = nombres
+            cliente["apellidos"] = apellidos
+            cliente["telefono"] = telefono
+            cliente["Fijo"] = Fijo
+            cliente["direccion"] = direccion
+    with open( "data/modulos/clientes.json", "w") as outfile:
+        json.dump(clientes, outfile,indent=4)
+
+def asignarle_categoria()

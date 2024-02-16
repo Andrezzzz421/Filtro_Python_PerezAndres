@@ -12,7 +12,7 @@ def menu_de_usuarios():
     print("1.Crear Usuario")
     print("2.Mostrar informacion de los usuario")
     print("3.Actualizar informacion de los usuarios")
-    print("4.Eliminar usuario")
+    print("4.asignarle categoria")
     print("5.Atras")
 
 def main():
