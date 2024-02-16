@@ -30,7 +30,7 @@ def main():
                 elif opcion == '3':
                     func.actualizar_usuario()
                 elif opcion == '4':
-                    func.eliminar_usuario()
+                    func.asignarle_categoria()
                 elif opcion == '5':
                     break
                 else:

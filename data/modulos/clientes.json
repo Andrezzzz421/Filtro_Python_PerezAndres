@@ -1,23 +1,12 @@
-{
-    "Clientes": [
-        {
-            "ID": 1,
-            "N_documento": 15125126,
-            "nombres": "tumamaen4 q rico",
-            "apellidos": "qrica tu vieja we",
-            "telefono": 124124124,
-            "Fijo": 12421421,
-            "direccion": "oie si qriko#21"
-        },
-        {
-            "ID": 2,
-            "N_documento": "213213",
-            "nombres": "adsad",
-            "apellidos": "sadsad",
-            "telefono": "213213",
-            "Fijo": "213213",
-            "direccion": "asdsadsa",
-            "Categoria": ""
-        }
-    ]
-}
+[
+    {
+        "ID": 2,
+        "N_documento": "213213",
+        "nombres": "adsad",
+        "apellidos": "sadsad",
+        "telefono": "213213",
+        "Fijo": "213213",
+        "direccion": "asdsadsa",
+        "Categoria": "Cliente regular"
+    }
+]

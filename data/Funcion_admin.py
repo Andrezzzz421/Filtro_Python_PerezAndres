@@ -55,4 +55,43 @@ def actualizar_usuario():
     with open( "data/modulos/clientes.json", "w") as outfile:
         json.dump(clientes, outfile,indent=4)
 
-def asignarle_categoria()
+def asignarle_categoria():
+    with open("data/modulos/clientes.json", "r") as outfile:
+        clientes = json.load(outfile)
+        clientes = clientes["Clientes"]
+
+    while True:
+        cliente_ID = input("Ingrese el id del usuario al que quiere asignarle una categoría (o ingrese 'salir' para terminar): ")
+        if cliente_ID.lower() == "salir":
+            break
+
+        try:
+            cliente_ID = int(cliente_ID)
+            cliente = next(filter(lambda c: c["ID"] == cliente_ID, clientes))
+            break
+        except (StopIteration, ValueError):
+            print("ID inválido. Intente nuevamente.")
+
+    while True:
+        print("Que categoría desea asignarle al usuario?")
+        print("1. Nuevo Cliente")
+        print("2. Cliente regular")
+        print("3. Cliente leal")
+
+        try:
+            op = int(input("Ingrese la opción por favor: "))
+            if op == 1:
+                cliente["Categoria"] = "Nuevo Cliente"
+            elif op == 2:
+                cliente["Categoria"] = "Cliente regular"
+            elif op == 3:
+                cliente["Categoria"] = "Cliente leal"
+            else:
+                print("Opción inválida. Intente nuevamente.")
+                continue
+            break
+        except ValueError:
+            print("Opción inválida. Intente nuevamente.")
+
+    with open("data/modulos/clientes.json", "w") as outfile:
+        json.dump(clientes, outfile, indent=4)
